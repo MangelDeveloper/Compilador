@@ -1,0 +1,2 @@
+Error semántico en la línea 5: La función de tipo INT no se ha devuelto ningún valor
+Número de errores: 1

@@ -1,0 +1,2 @@
+Error semántico en la línea 2: La función compiladores no ha sido declarada
+Número de errores: 1

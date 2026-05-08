@@ -1,0 +1,2 @@
+Error semántico en la línea 3: La función 'compiladores' ya existe como variable
+Número de errores: 1

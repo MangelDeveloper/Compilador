@@ -1,0 +1,2 @@
+Error sintáctico en línea 2: syntax error, unexpected INT
+Número de errores: 1

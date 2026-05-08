@@ -1,0 +1,2 @@
+Error léxico en línea 2: La variable aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa no puede exceder los 32 caracteres
+Número de errores: 1

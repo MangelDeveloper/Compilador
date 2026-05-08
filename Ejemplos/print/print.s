@@ -1,0 +1,44 @@
+###################
+# Seccion de datos
+	.data
+
+str1:
+	.asciiz "Resultados: "
+
+###################
+# Seccion de codigo
+	.text
+	.globl main
+main:
+	addiu $sp,$sp,-44
+	addiu $sp,$sp,-12
+	li $t0,2
+	sw $t0,4($sp)
+	li $t0,2
+	li $t1,2
+	mul $t0,$t0,$t1
+	sw $t0,8($sp)
+	li $t0,2
+	lw $t1,4($sp)
+	add $t0,$t0,$t1
+	sw $t0,12($sp)
+	move $s0,$a0
+	move $s1,$v0
+	li $v0,4
+	la $a0,str1
+	syscall
+	move $a0,$s0
+	move $v0,$s1
+	lw $t0,4($sp)
+	lw $t1,12($sp)
+	add $t0,$t0,$t1
+	li $v0,1
+	move $a0,$t0
+	syscall
+	addiu $sp,$sp,12
+	addiu $sp,$sp,44
+
+###################
+# Fin
+	li $v0,10
+	syscall

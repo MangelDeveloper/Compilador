@@ -1,0 +1,2 @@
+Error semántico en la línea 2: La función de tipo VOID no debe devolver un valor
+Número de errores: 1

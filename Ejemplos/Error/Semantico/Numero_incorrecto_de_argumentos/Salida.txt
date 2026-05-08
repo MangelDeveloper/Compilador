@@ -1,0 +1,2 @@
+Error semántico en la línea 6: Número incorrecto de argumentos para la función compiladores
+Número de errores: 1

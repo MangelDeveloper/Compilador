@@ -1,0 +1,2 @@
+Error semántico en la línea 2: 'y' no está declarado
+Número de errores: 1

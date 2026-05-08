@@ -1,0 +1,4 @@
+"Aaaa);
+Error léxico en línea 2: cadena sin cerrar
+Error sintáctico en línea 2: syntax error, unexpected end of file
+Número de errores: 2

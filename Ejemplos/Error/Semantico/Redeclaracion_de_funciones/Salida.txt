@@ -1,0 +1,2 @@
+Error semántico en la línea 5: no se puede crear la función 'compiladores' porque ya ha sido creada
+Número de errores: 1

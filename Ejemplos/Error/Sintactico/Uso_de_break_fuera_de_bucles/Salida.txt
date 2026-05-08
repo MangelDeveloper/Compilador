@@ -1,0 +1,2 @@
+Error sintáctico en línea 4: El break no está dentro de un bucle.
+Número de errores: 1

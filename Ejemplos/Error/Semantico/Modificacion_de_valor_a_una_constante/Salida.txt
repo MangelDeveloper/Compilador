@@ -1,0 +1,2 @@
+Error semántico en la línea 3: no se puede modificar la constante 'x'
+Número de errores: 1

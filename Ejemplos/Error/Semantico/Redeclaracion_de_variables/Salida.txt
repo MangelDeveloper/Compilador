@@ -1,0 +1,2 @@
+Error semántico en la línea 3: no se puede crear la variable 'x' porque ya ha sido declarada
+Número de errores: 1

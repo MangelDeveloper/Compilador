@@ -1,0 +1,2 @@
+Error sintáctico en línea 3: El programa debe tener la función main.
+Número de errores: 1

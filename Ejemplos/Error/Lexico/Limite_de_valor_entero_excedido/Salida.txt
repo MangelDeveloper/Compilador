@@ -1,0 +1,2 @@
+Error léxico en línea 2: el número '22222222222222222222' supera el valor máximo permitido
+Número de errores: 1

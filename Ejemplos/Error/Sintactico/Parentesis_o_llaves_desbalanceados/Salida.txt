@@ -1,0 +1,2 @@
+Error sintáctico en línea 3: syntax error, unexpected {
+Número de errores: 1
