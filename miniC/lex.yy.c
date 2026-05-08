@@ -1,6 +1,6 @@
-#line 1 "./miniC/lex.yy.c"
+#line 2 "./miniC/lex.yy.c"
 
-#line 3 "./miniC/lex.yy.c"
+#line 4 "./miniC/lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -548,10 +548,10 @@ char *yytext;
 	int inicio_string = 0;
 	/* Solo se podrá asignar valores entre 0 y 2³¹-1 = 2147483647 */
     #define MAX_INT 2147483647
-#line 551 "./miniC/lex.yy.c"
+#line 552 "./miniC/lex.yy.c"
 /* Condición de contexto */
  
-#line 554 "./miniC/lex.yy.c"
+#line 555 "./miniC/lex.yy.c"
 
 #define INITIAL 0
 #define comentario 1
@@ -564,7 +564,7 @@ char *yytext;
  */
 #include <unistd.h>
 #endif
-    
+
 #ifndef YY_EXTRA_TYPE
 #define YY_EXTRA_TYPE void *
 #endif
@@ -775,7 +775,7 @@ YY_DECL
 
 #line 36 "./miniC/miniC.l"
  /* Sección de reglas */
-#line 778 "./miniC/lex.yy.c"
+#line 779 "./miniC/lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1115,7 +1115,7 @@ YY_RULE_SETUP
 #line 130 "./miniC/miniC.l"
 ECHO;
 	YY_BREAK
-#line 1118 "./miniC/lex.yy.c"
+#line 1119 "./miniC/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

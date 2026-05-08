@@ -13,7 +13,7 @@ STACK_INT_OBJ = ./Utils/stack_int.o
 STACK_TSIMBOLOS_OBJ = ./Utils/stack_tabla_simbolos.o
 THASH_OBJ = ./Utils/tabla_hash.o
 FLEX_UTILS_OBJ = ./Utils/flex_utils.o
-INPUT_FILE = Ejemplos\Prueba\entrada.mc
+INPUT_FILE = ./Ejemplos/Prueba/entrada.mc
 #INPUT_FILE = ./Ejemplos/Recursividad/Fibonacci/entrada.mc
 #INPUT_FILE = ./Ejemplos/Recursividad/Factorial/entrada.mc
 

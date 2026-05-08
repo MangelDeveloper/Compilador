@@ -4,6 +4,8 @@
 
 str1:
 	.asciiz "Resultados: "
+str2:
+	.asciiz "\n"
 
 ###################
 # Seccion de codigo
@@ -35,6 +37,13 @@ main:
 	li $v0,1
 	move $a0,$t0
 	syscall
+	move $s0,$a0
+	move $s1,$v0
+	li $v0,4
+	la $a0,str2
+	syscall
+	move $a0,$s0
+	move $v0,$s1
 	addiu $sp,$sp,12
 	addiu $sp,$sp,44
 

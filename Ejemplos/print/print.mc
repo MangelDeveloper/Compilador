@@ -3,5 +3,5 @@ void main() {
     var int b = 2*2;
     var int c = 2+a;
     
-    print("Resultados: ", a+c);
+    print("Resultados: ", a+c,"\n");
 }

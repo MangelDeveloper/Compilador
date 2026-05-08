@@ -1,12 +1,12 @@
-Grammar
+Gramática
 
     0 $accept: program $end
 
-    1 $@1: %empty
+    1 $@1: ε
 
     2 program: $@1 global_declarations function_list
 
-    3 global_declarations: %empty
+    3 global_declarations: ε
     4                    | global_declarations global_declaration
 
     5 global_declaration: VAR tipo global_id_list ";"
@@ -20,13 +20,13 @@ Grammar
    10 function_list: function
    11              | function_list function
 
-   12 $@2: %empty
+   12 $@2: ε
 
-   13 $@3: %empty
+   13 $@3: ε
 
    14 function: return_function IDE "(" $@2 param_list ")" $@3 block
 
-   15 param_list: %empty
+   15 param_list: ε
    16           | param_decl
    17           | param_list "," param_decl
 
@@ -35,19 +35,19 @@ Grammar
    19 return_function: INT
    20                | VOI
 
-   21 $@4: %empty
+   21 $@4: ε
 
    22 block: "{" $@4 body "}"
 
    23 body: body declaration
    24     | body statement
-   25     | %empty
+   25     | ε
 
-   26 $@5: %empty
+   26 $@5: ε
 
    27 declaration: VAR $@5 tipo id_list ";"
 
-   28 $@6: %empty
+   28 $@6: ε
 
    29 declaration: CON $@6 tipo id_list ";"
 
@@ -67,22 +67,22 @@ Grammar
    40          | IF "(" expression ")" statement
    41          | IF "(" expression ")" statement ELS statement
 
-   42 $@7: %empty
+   42 $@7: ε
 
    43 statement: WHI $@7 "(" expression ")" statement
 
-   44 $@8: %empty
+   44 $@8: ε
 
    45 statement: DO $@8 statement WHI "(" expression ")" ";"
 
-   46 $@9: %empty
+   46 $@9: ε
 
    47 statement: FOR $@9 "(" asignation ";" expression ";" asignation ")" statement
    48          | BRK ";"
    49          | PRI "(" print_list ")" ";"
    50          | REA "(" read_list ")" ";"
 
-   51 $@10: %empty
+   51 $@10: ε
 
    52 asignation: IDE $@10 "=" expression
 
@@ -95,7 +95,7 @@ Grammar
    57 read_list: IDE
    58          | read_list "," IDE
 
-   59 arg_list: %empty
+   59 arg_list: ε
    60         | expression
    61         | arg_list "," expression
 
@@ -118,7 +118,7 @@ Grammar
    77 call_function: IDE "(" arg_list ")"
 
 
-Terminals, with rules where they appear
+Terminales con las reglas donde aparecen
 
     $end (0) 0
     error (256)
@@ -159,7 +159,7 @@ Terminals, with rules where they appear
     NOELSE (292)
 
 
-Nonterminals, with rules where they appear
+No terminales con las reglas donde aparecen
 
     $accept (38)
         on left: 0
@@ -267,1853 +267,1853 @@ Nonterminals, with rules where they appear
         on right: 36 62
 
 
-State 0
+Estado 0
 
-    0 $accept: . program $end
+    0 $accept: • program $end
 
-    $default  reduce using rule 1 ($@1)
+    $default  reduce usando la regla 1 ($@1)
 
-    program  go to state 1
-    $@1      go to state 2
+    program  ir al estado 1
+    $@1      ir al estado 2
 
 
-State 1
+Estado 1
 
-    0 $accept: program . $end
+    0 $accept: program • $end
 
-    $end  shift, and go to state 3
+    $end  desplazar e ir al estado 3
 
 
-State 2
+Estado 2
 
-    2 program: $@1 . global_declarations function_list
+    2 program: $@1 • global_declarations function_list
 
-    $default  reduce using rule 3 (global_declarations)
+    $default  reduce usando la regla 3 (global_declarations)
 
-    global_declarations  go to state 4
+    global_declarations  ir al estado 4
 
 
-State 3
+Estado 3
 
-    0 $accept: program $end .
+    0 $accept: program $end •
 
-    $default  accept
+    $default  aceptar
 
 
-State 4
+Estado 4
 
-    2 program: $@1 global_declarations . function_list
-    4 global_declarations: global_declarations . global_declaration
+    2 program: $@1 global_declarations • function_list
+    4 global_declarations: global_declarations • global_declaration
 
-    VOI  shift, and go to state 5
-    VAR  shift, and go to state 6
-    INT  shift, and go to state 7
+    VOI  desplazar e ir al estado 5
+    VAR  desplazar e ir al estado 6
+    INT  desplazar e ir al estado 7
 
-    global_declaration  go to state 8
-    function_list       go to state 9
-    function            go to state 10
-    return_function     go to state 11
+    global_declaration  ir al estado 8
+    function_list       ir al estado 9
+    function            ir al estado 10
+    return_function     ir al estado 11
 
 
-State 5
+Estado 5
 
-   20 return_function: VOI .
+   20 return_function: VOI •
 
-    $default  reduce using rule 20 (return_function)
+    $default  reduce usando la regla 20 (return_function)
 
 
-State 6
+Estado 6
 
-    5 global_declaration: VAR . tipo global_id_list ";"
+    5 global_declaration: VAR • tipo global_id_list ";"
 
-    INT  shift, and go to state 12
+    INT  desplazar e ir al estado 12
 
-    tipo  go to state 13
+    tipo  ir al estado 13
 
 
-State 7
+Estado 7
 
-   19 return_function: INT .
+   19 return_function: INT •
 
-    $default  reduce using rule 19 (return_function)
+    $default  reduce usando la regla 19 (return_function)
 
 
-State 8
+Estado 8
 
-    4 global_declarations: global_declarations global_declaration .
+    4 global_declarations: global_declarations global_declaration •
 
-    $default  reduce using rule 4 (global_declarations)
+    $default  reduce usando la regla 4 (global_declarations)
 
 
-State 9
+Estado 9
 
-    2 program: $@1 global_declarations function_list .
-   11 function_list: function_list . function
+    2 program: $@1 global_declarations function_list •
+   11 function_list: function_list • function
 
-    VOI  shift, and go to state 5
-    INT  shift, and go to state 7
+    VOI  desplazar e ir al estado 5
+    INT  desplazar e ir al estado 7
 
-    $default  reduce using rule 2 (program)
+    $default  reduce usando la regla 2 (program)
 
-    function         go to state 14
-    return_function  go to state 11
+    function         ir al estado 14
+    return_function  ir al estado 11
 
 
-State 10
+Estado 10
 
-   10 function_list: function .
+   10 function_list: function •
 
-    $default  reduce using rule 10 (function_list)
+    $default  reduce usando la regla 10 (function_list)
 
 
-State 11
+Estado 11
 
-   14 function: return_function . IDE "(" $@2 param_list ")" $@3 block
+   14 function: return_function • IDE "(" $@2 param_list ")" $@3 block
 
-    IDE  shift, and go to state 15
+    IDE  desplazar e ir al estado 15
 
 
-State 12
+Estado 12
 
-   30 tipo: INT .
+   30 tipo: INT •
 
-    $default  reduce using rule 30 (tipo)
+    $default  reduce usando la regla 30 (tipo)
 
 
-State 13
+Estado 13
 
-    5 global_declaration: VAR tipo . global_id_list ";"
+    5 global_declaration: VAR tipo • global_id_list ";"
 
-    IDE  shift, and go to state 16
+    IDE  desplazar e ir al estado 16
 
-    global_id_list  go to state 17
-    global_id_decl  go to state 18
+    global_id_list  ir al estado 17
+    global_id_decl  ir al estado 18
 
 
-State 14
+Estado 14
 
-   11 function_list: function_list function .
+   11 function_list: function_list function •
 
-    $default  reduce using rule 11 (function_list)
+    $default  reduce usando la regla 11 (function_list)
 
 
-State 15
+Estado 15
 
-   14 function: return_function IDE . "(" $@2 param_list ")" $@3 block
+   14 function: return_function IDE • "(" $@2 param_list ")" $@3 block
 
-    "("  shift, and go to state 19
+    "("  desplazar e ir al estado 19
 
 
-State 16
+Estado 16
 
-    8 global_id_decl: IDE .
-    9               | IDE . "=" NUM
+    8 global_id_decl: IDE •
+    9               | IDE • "=" NUM
 
-    "="  shift, and go to state 20
+    "="  desplazar e ir al estado 20
 
-    $default  reduce using rule 8 (global_id_decl)
+    $default  reduce usando la regla 8 (global_id_decl)
 
 
-State 17
+Estado 17
 
-    5 global_declaration: VAR tipo global_id_list . ";"
-    7 global_id_list: global_id_list . "," global_id_decl
+    5 global_declaration: VAR tipo global_id_list • ";"
+    7 global_id_list: global_id_list • "," global_id_decl
 
-    ";"  shift, and go to state 21
-    ","  shift, and go to state 22
+    ";"  desplazar e ir al estado 21
+    ","  desplazar e ir al estado 22
 
 
-State 18
+Estado 18
 
-    6 global_id_list: global_id_decl .
+    6 global_id_list: global_id_decl •
 
-    $default  reduce using rule 6 (global_id_list)
+    $default  reduce usando la regla 6 (global_id_list)
 
 
-State 19
+Estado 19
 
-   14 function: return_function IDE "(" . $@2 param_list ")" $@3 block
+   14 function: return_function IDE "(" • $@2 param_list ")" $@3 block
 
-    $default  reduce using rule 12 ($@2)
+    $default  reduce usando la regla 12 ($@2)
 
-    $@2  go to state 23
+    $@2  ir al estado 23
 
 
-State 20
+Estado 20
 
-    9 global_id_decl: IDE "=" . NUM
+    9 global_id_decl: IDE "=" • NUM
 
-    NUM  shift, and go to state 24
+    NUM  desplazar e ir al estado 24
 
 
-State 21
+Estado 21
 
-    5 global_declaration: VAR tipo global_id_list ";" .
+    5 global_declaration: VAR tipo global_id_list ";" •
 
-    $default  reduce using rule 5 (global_declaration)
+    $default  reduce usando la regla 5 (global_declaration)
 
 
-State 22
+Estado 22
 
-    7 global_id_list: global_id_list "," . global_id_decl
+    7 global_id_list: global_id_list "," • global_id_decl
 
-    IDE  shift, and go to state 16
+    IDE  desplazar e ir al estado 16
 
-    global_id_decl  go to state 25
+    global_id_decl  ir al estado 25
 
 
-State 23
+Estado 23
 
-   14 function: return_function IDE "(" $@2 . param_list ")" $@3 block
+   14 function: return_function IDE "(" $@2 • param_list ")" $@3 block
 
-    INT  shift, and go to state 26
+    INT  desplazar e ir al estado 26
 
-    $default  reduce using rule 15 (param_list)
+    $default  reduce usando la regla 15 (param_list)
 
-    param_list  go to state 27
-    param_decl  go to state 28
+    param_list  ir al estado 27
+    param_decl  ir al estado 28
 
 
-State 24
+Estado 24
 
-    9 global_id_decl: IDE "=" NUM .
+    9 global_id_decl: IDE "=" NUM •
 
-    $default  reduce using rule 9 (global_id_decl)
+    $default  reduce usando la regla 9 (global_id_decl)
 
 
-State 25
+Estado 25
 
-    7 global_id_list: global_id_list "," global_id_decl .
+    7 global_id_list: global_id_list "," global_id_decl •
 
-    $default  reduce using rule 7 (global_id_list)
+    $default  reduce usando la regla 7 (global_id_list)
 
 
-State 26
+Estado 26
 
-   18 param_decl: INT . IDE
+   18 param_decl: INT • IDE
 
-    IDE  shift, and go to state 29
+    IDE  desplazar e ir al estado 29
 
 
-State 27
+Estado 27
 
-   14 function: return_function IDE "(" $@2 param_list . ")" $@3 block
-   17 param_list: param_list . "," param_decl
+   14 function: return_function IDE "(" $@2 param_list • ")" $@3 block
+   17 param_list: param_list • "," param_decl
 
-    ")"  shift, and go to state 30
-    ","  shift, and go to state 31
+    ")"  desplazar e ir al estado 30
+    ","  desplazar e ir al estado 31
 
 
-State 28
+Estado 28
 
-   16 param_list: param_decl .
+   16 param_list: param_decl •
 
-    $default  reduce using rule 16 (param_list)
+    $default  reduce usando la regla 16 (param_list)
 
 
-State 29
+Estado 29
 
-   18 param_decl: INT IDE .
+   18 param_decl: INT IDE •
 
-    $default  reduce using rule 18 (param_decl)
+    $default  reduce usando la regla 18 (param_decl)
 
 
-State 30
+Estado 30
 
-   14 function: return_function IDE "(" $@2 param_list ")" . $@3 block
+   14 function: return_function IDE "(" $@2 param_list ")" • $@3 block
 
-    $default  reduce using rule 13 ($@3)
+    $default  reduce usando la regla 13 ($@3)
 
-    $@3  go to state 32
+    $@3  ir al estado 32
 
 
-State 31
+Estado 31
 
-   17 param_list: param_list "," . param_decl
+   17 param_list: param_list "," • param_decl
 
-    INT  shift, and go to state 26
+    INT  desplazar e ir al estado 26
 
-    param_decl  go to state 33
+    param_decl  ir al estado 33
 
 
-State 32
+Estado 32
 
-   14 function: return_function IDE "(" $@2 param_list ")" $@3 . block
+   14 function: return_function IDE "(" $@2 param_list ")" $@3 • block
 
-    "{"  shift, and go to state 34
+    "{"  desplazar e ir al estado 34
 
-    block  go to state 35
+    block  ir al estado 35
 
 
-State 33
+Estado 33
 
-   17 param_list: param_list "," param_decl .
+   17 param_list: param_list "," param_decl •
 
-    $default  reduce using rule 17 (param_list)
+    $default  reduce usando la regla 17 (param_list)
 
 
-State 34
+Estado 34
 
-   22 block: "{" . $@4 body "}"
+   22 block: "{" • $@4 body "}"
 
-    $default  reduce using rule 21 ($@4)
+    $default  reduce usando la regla 21 ($@4)
 
-    $@4  go to state 36
+    $@4  ir al estado 36
 
 
-State 35
+Estado 35
 
-   14 function: return_function IDE "(" $@2 param_list ")" $@3 block .
+   14 function: return_function IDE "(" $@2 param_list ")" $@3 block •
 
-    $default  reduce using rule 14 (function)
+    $default  reduce usando la regla 14 (function)
 
 
-State 36
+Estado 36
 
-   22 block: "{" $@4 . body "}"
+   22 block: "{" $@4 • body "}"
 
-    $default  reduce using rule 25 (body)
+    $default  reduce usando la regla 25 (body)
 
-    body  go to state 37
+    body  ir al estado 37
 
 
-State 37
+Estado 37
 
-   22 block: "{" $@4 body . "}"
-   23 body: body . declaration
-   24     | body . statement
+   22 block: "{" $@4 body • "}"
+   23 body: body • declaration
+   24     | body • statement
 
-    IDE  shift, and go to state 38
-    VAR  shift, and go to state 39
-    CON  shift, and go to state 40
-    IF   shift, and go to state 41
-    WHI  shift, and go to state 42
-    PRI  shift, and go to state 43
-    REA  shift, and go to state 44
-    DO   shift, and go to state 45
-    FOR  shift, and go to state 46
-    BRK  shift, and go to state 47
-    RET  shift, and go to state 48
-    "{"  shift, and go to state 34
-    "}"  shift, and go to state 49
+    IDE  desplazar e ir al estado 38
+    VAR  desplazar e ir al estado 39
+    CON  desplazar e ir al estado 40
+    IF   desplazar e ir al estado 41
+    WHI  desplazar e ir al estado 42
+    PRI  desplazar e ir al estado 43
+    REA  desplazar e ir al estado 44
+    DO   desplazar e ir al estado 45
+    FOR  desplazar e ir al estado 46
+    BRK  desplazar e ir al estado 47
+    RET  desplazar e ir al estado 48
+    "{"  desplazar e ir al estado 34
+    "}"  desplazar e ir al estado 49
 
-    block          go to state 50
-    declaration    go to state 51
-    statement      go to state 52
-    asignation     go to state 53
-    call_function  go to state 54
+    block          ir al estado 50
+    declaration    ir al estado 51
+    statement      ir al estado 52
+    asignation     ir al estado 53
+    call_function  ir al estado 54
 
 
-State 38
+Estado 38
 
-   52 asignation: IDE . $@10 "=" expression
-   77 call_function: IDE . "(" arg_list ")"
+   52 asignation: IDE • $@10 "=" expression
+   77 call_function: IDE • "(" arg_list ")"
 
-    "("  shift, and go to state 55
+    "("  desplazar e ir al estado 55
 
-    $default  reduce using rule 51 ($@10)
+    $default  reduce usando la regla 51 ($@10)
 
-    $@10  go to state 56
+    $@10  ir al estado 56
 
 
-State 39
+Estado 39
 
-   27 declaration: VAR . $@5 tipo id_list ";"
+   27 declaration: VAR • $@5 tipo id_list ";"
 
-    $default  reduce using rule 26 ($@5)
+    $default  reduce usando la regla 26 ($@5)
 
-    $@5  go to state 57
+    $@5  ir al estado 57
 
 
-State 40
+Estado 40
 
-   29 declaration: CON . $@6 tipo id_list ";"
+   29 declaration: CON • $@6 tipo id_list ";"
 
-    $default  reduce using rule 28 ($@6)
+    $default  reduce usando la regla 28 ($@6)
 
-    $@6  go to state 58
+    $@6  ir al estado 58
 
 
-State 41
+Estado 41
 
-   40 statement: IF . "(" expression ")" statement
-   41          | IF . "(" expression ")" statement ELS statement
+   40 statement: IF • "(" expression ")" statement
+   41          | IF • "(" expression ")" statement ELS statement
 
-    "("  shift, and go to state 59
+    "("  desplazar e ir al estado 59
 
 
-State 42
+Estado 42
 
-   43 statement: WHI . $@7 "(" expression ")" statement
+   43 statement: WHI • $@7 "(" expression ")" statement
 
-    $default  reduce using rule 42 ($@7)
+    $default  reduce usando la regla 42 ($@7)
 
-    $@7  go to state 60
+    $@7  ir al estado 60
 
 
-State 43
+Estado 43
 
-   49 statement: PRI . "(" print_list ")" ";"
+   49 statement: PRI • "(" print_list ")" ";"
 
-    "("  shift, and go to state 61
+    "("  desplazar e ir al estado 61
 
 
-State 44
+Estado 44
 
-   50 statement: REA . "(" read_list ")" ";"
+   50 statement: REA • "(" read_list ")" ";"
 
-    "("  shift, and go to state 62
+    "("  desplazar e ir al estado 62
 
 
-State 45
+Estado 45
 
-   45 statement: DO . $@8 statement WHI "(" expression ")" ";"
+   45 statement: DO • $@8 statement WHI "(" expression ")" ";"
 
-    $default  reduce using rule 44 ($@8)
+    $default  reduce usando la regla 44 ($@8)
 
-    $@8  go to state 63
+    $@8  ir al estado 63
 
 
-State 46
+Estado 46
 
-   47 statement: FOR . $@9 "(" asignation ";" expression ";" asignation ")" statement
+   47 statement: FOR • $@9 "(" asignation ";" expression ";" asignation ")" statement
 
-    $default  reduce using rule 46 ($@9)
+    $default  reduce usando la regla 46 ($@9)
 
-    $@9  go to state 64
+    $@9  ir al estado 64
 
 
-State 47
+Estado 47
 
-   48 statement: BRK . ";"
+   48 statement: BRK • ";"
 
-    ";"  shift, and go to state 65
+    ";"  desplazar e ir al estado 65
 
 
-State 48
+Estado 48
 
-   37 statement: RET . expression ";"
-   38          | RET . ";"
+   37 statement: RET • expression ";"
+   38          | RET • ";"
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    ";"  shift, and go to state 69
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    ";"  desplazar e ir al estado 69
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 71
-    call_function  go to state 72
+    expression     ir al estado 71
+    call_function  ir al estado 72
 
 
-State 49
+Estado 49
 
-   22 block: "{" $@4 body "}" .
+   22 block: "{" $@4 body "}" •
 
-    $default  reduce using rule 22 (block)
+    $default  reduce usando la regla 22 (block)
 
 
-State 50
+Estado 50
 
-   39 statement: block .
+   39 statement: block •
 
-    $default  reduce using rule 39 (statement)
+    $default  reduce usando la regla 39 (statement)
 
 
-State 51
+Estado 51
 
-   23 body: body declaration .
+   23 body: body declaration •
 
-    $default  reduce using rule 23 (body)
+    $default  reduce usando la regla 23 (body)
 
 
-State 52
+Estado 52
 
-   24 body: body statement .
+   24 body: body statement •
 
-    $default  reduce using rule 24 (body)
+    $default  reduce usando la regla 24 (body)
 
 
-State 53
+Estado 53
 
-   35 statement: asignation . ";"
+   35 statement: asignation • ";"
 
-    ";"  shift, and go to state 73
+    ";"  desplazar e ir al estado 73
 
 
-State 54
+Estado 54
 
-   36 statement: call_function . ";"
+   36 statement: call_function • ";"
 
-    ";"  shift, and go to state 74
+    ";"  desplazar e ir al estado 74
 
 
-State 55
+Estado 55
 
-   77 call_function: IDE "(" . arg_list ")"
+   77 call_function: IDE "(" • arg_list ")"
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    $default  reduce using rule 59 (arg_list)
+    $default  reduce usando la regla 59 (arg_list)
 
-    arg_list       go to state 75
-    expression     go to state 76
-    call_function  go to state 72
+    arg_list       ir al estado 75
+    expression     ir al estado 76
+    call_function  ir al estado 72
 
 
-State 56
+Estado 56
 
-   52 asignation: IDE $@10 . "=" expression
+   52 asignation: IDE $@10 • "=" expression
 
-    "="  shift, and go to state 77
+    "="  desplazar e ir al estado 77
 
 
-State 57
+Estado 57
 
-   27 declaration: VAR $@5 . tipo id_list ";"
+   27 declaration: VAR $@5 • tipo id_list ";"
 
-    INT  shift, and go to state 12
+    INT  desplazar e ir al estado 12
 
-    tipo  go to state 78
+    tipo  ir al estado 78
 
 
-State 58
+Estado 58
 
-   29 declaration: CON $@6 . tipo id_list ";"
+   29 declaration: CON $@6 • tipo id_list ";"
 
-    INT  shift, and go to state 12
+    INT  desplazar e ir al estado 12
 
-    tipo  go to state 79
+    tipo  ir al estado 79
 
 
-State 59
+Estado 59
 
-   40 statement: IF "(" . expression ")" statement
-   41          | IF "(" . expression ")" statement ELS statement
+   40 statement: IF "(" • expression ")" statement
+   41          | IF "(" • expression ")" statement ELS statement
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 80
-    call_function  go to state 72
+    expression     ir al estado 80
+    call_function  ir al estado 72
 
 
-State 60
+Estado 60
 
-   43 statement: WHI $@7 . "(" expression ")" statement
+   43 statement: WHI $@7 • "(" expression ")" statement
 
-    "("  shift, and go to state 81
+    "("  desplazar e ir al estado 81
 
 
-State 61
+Estado 61
 
-   49 statement: PRI "(" . print_list ")" ";"
+   49 statement: PRI "(" • print_list ")" ";"
 
-    IDE  shift, and go to state 66
-    CAD  shift, and go to state 82
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    CAD  desplazar e ir al estado 82
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    print_list     go to state 83
-    print_item     go to state 84
-    expression     go to state 85
-    call_function  go to state 72
+    print_list     ir al estado 83
+    print_item     ir al estado 84
+    expression     ir al estado 85
+    call_function  ir al estado 72
 
 
-State 62
+Estado 62
 
-   50 statement: REA "(" . read_list ")" ";"
+   50 statement: REA "(" • read_list ")" ";"
 
-    IDE  shift, and go to state 86
+    IDE  desplazar e ir al estado 86
 
-    read_list  go to state 87
+    read_list  ir al estado 87
 
 
-State 63
+Estado 63
 
-   45 statement: DO $@8 . statement WHI "(" expression ")" ";"
+   45 statement: DO $@8 • statement WHI "(" expression ")" ";"
 
-    IDE  shift, and go to state 38
-    IF   shift, and go to state 41
-    WHI  shift, and go to state 42
-    PRI  shift, and go to state 43
-    REA  shift, and go to state 44
-    DO   shift, and go to state 45
-    FOR  shift, and go to state 46
-    BRK  shift, and go to state 47
-    RET  shift, and go to state 48
-    "{"  shift, and go to state 34
+    IDE  desplazar e ir al estado 38
+    IF   desplazar e ir al estado 41
+    WHI  desplazar e ir al estado 42
+    PRI  desplazar e ir al estado 43
+    REA  desplazar e ir al estado 44
+    DO   desplazar e ir al estado 45
+    FOR  desplazar e ir al estado 46
+    BRK  desplazar e ir al estado 47
+    RET  desplazar e ir al estado 48
+    "{"  desplazar e ir al estado 34
 
-    block          go to state 50
-    statement      go to state 88
-    asignation     go to state 53
-    call_function  go to state 54
+    block          ir al estado 50
+    statement      ir al estado 88
+    asignation     ir al estado 53
+    call_function  ir al estado 54
 
 
-State 64
+Estado 64
 
-   47 statement: FOR $@9 . "(" asignation ";" expression ";" asignation ")" statement
+   47 statement: FOR $@9 • "(" asignation ";" expression ";" asignation ")" statement
 
-    "("  shift, and go to state 89
+    "("  desplazar e ir al estado 89
 
 
-State 65
+Estado 65
 
-   48 statement: BRK ";" .
+   48 statement: BRK ";" •
 
-    $default  reduce using rule 48 (statement)
+    $default  reduce usando la regla 48 (statement)
 
 
-State 66
+Estado 66
 
-   76 expression: IDE .
-   77 call_function: IDE . "(" arg_list ")"
+   76 expression: IDE •
+   77 call_function: IDE • "(" arg_list ")"
 
-    "("  shift, and go to state 55
+    "("  desplazar e ir al estado 55
 
-    $default  reduce using rule 76 (expression)
+    $default  reduce usando la regla 76 (expression)
 
 
-State 67
+Estado 67
 
-   75 expression: NUM .
+   75 expression: NUM •
 
-    $default  reduce using rule 75 (expression)
+    $default  reduce usando la regla 75 (expression)
 
 
-State 68
+Estado 68
 
-   73 expression: "-" . expression
+   73 expression: "-" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 90
-    call_function  go to state 72
+    expression     ir al estado 90
+    call_function  ir al estado 72
 
 
-State 69
+Estado 69
 
-   38 statement: RET ";" .
+   38 statement: RET ";" •
 
-    $default  reduce using rule 38 (statement)
+    $default  reduce usando la regla 38 (statement)
 
 
-State 70
+Estado 70
 
-   74 expression: "(" . expression ")"
+   74 expression: "(" • expression ")"
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 91
-    call_function  go to state 72
+    expression     ir al estado 91
+    call_function  ir al estado 72
 
 
-State 71
+Estado 71
 
-   37 statement: RET expression . ";"
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   37 statement: RET expression • ";"
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    ";"   shift, and go to state 96
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    ";"   desplazar e ir al estado 96
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
 
-State 72
+Estado 72
 
-   62 expression: call_function .
+   62 expression: call_function •
 
-    $default  reduce using rule 62 (expression)
+    $default  reduce usando la regla 62 (expression)
 
 
-State 73
+Estado 73
 
-   35 statement: asignation ";" .
+   35 statement: asignation ";" •
 
-    $default  reduce using rule 35 (statement)
+    $default  reduce usando la regla 35 (statement)
 
 
-State 74
+Estado 74
 
-   36 statement: call_function ";" .
+   36 statement: call_function ";" •
 
-    $default  reduce using rule 36 (statement)
+    $default  reduce usando la regla 36 (statement)
 
 
-State 75
+Estado 75
 
-   61 arg_list: arg_list . "," expression
-   77 call_function: IDE "(" arg_list . ")"
+   61 arg_list: arg_list • "," expression
+   77 call_function: IDE "(" arg_list • ")"
 
-    ")"  shift, and go to state 103
-    ","  shift, and go to state 104
+    ")"  desplazar e ir al estado 103
+    ","  desplazar e ir al estado 104
 
 
-State 76
+Estado 76
 
-   60 arg_list: expression .
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   60 arg_list: expression •
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
-    $default  reduce using rule 60 (arg_list)
+    $default  reduce usando la regla 60 (arg_list)
 
 
-State 77
+Estado 77
 
-   52 asignation: IDE $@10 "=" . expression
+   52 asignation: IDE $@10 "=" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 105
-    call_function  go to state 72
+    expression     ir al estado 105
+    call_function  ir al estado 72
 
 
-State 78
+Estado 78
 
-   27 declaration: VAR $@5 tipo . id_list ";"
+   27 declaration: VAR $@5 tipo • id_list ";"
 
-    IDE  shift, and go to state 106
+    IDE  desplazar e ir al estado 106
 
-    id_list  go to state 107
-    id_decl  go to state 108
+    id_list  ir al estado 107
+    id_decl  ir al estado 108
 
 
-State 79
+Estado 79
 
-   29 declaration: CON $@6 tipo . id_list ";"
+   29 declaration: CON $@6 tipo • id_list ";"
 
-    IDE  shift, and go to state 106
+    IDE  desplazar e ir al estado 106
 
-    id_list  go to state 109
-    id_decl  go to state 108
+    id_list  ir al estado 109
+    id_decl  ir al estado 108
 
 
-State 80
+Estado 80
 
-   40 statement: IF "(" expression . ")" statement
-   41          | IF "(" expression . ")" statement ELS statement
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   40 statement: IF "(" expression • ")" statement
+   41          | IF "(" expression • ")" statement ELS statement
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    ")"   shift, and go to state 110
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    ")"   desplazar e ir al estado 110
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
 
-State 81
+Estado 81
 
-   43 statement: WHI $@7 "(" . expression ")" statement
+   43 statement: WHI $@7 "(" • expression ")" statement
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 111
-    call_function  go to state 72
+    expression     ir al estado 111
+    call_function  ir al estado 72
 
 
-State 82
+Estado 82
 
-   56 print_item: CAD .
+   56 print_item: CAD •
 
-    $default  reduce using rule 56 (print_item)
+    $default  reduce usando la regla 56 (print_item)
 
 
-State 83
+Estado 83
 
-   49 statement: PRI "(" print_list . ")" ";"
-   54 print_list: print_list . "," print_item
+   49 statement: PRI "(" print_list • ")" ";"
+   54 print_list: print_list • "," print_item
 
-    ")"  shift, and go to state 112
-    ","  shift, and go to state 113
+    ")"  desplazar e ir al estado 112
+    ","  desplazar e ir al estado 113
 
 
-State 84
+Estado 84
 
-   53 print_list: print_item .
+   53 print_list: print_item •
 
-    $default  reduce using rule 53 (print_list)
+    $default  reduce usando la regla 53 (print_list)
 
 
-State 85
+Estado 85
 
-   55 print_item: expression .
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   55 print_item: expression •
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
-    $default  reduce using rule 55 (print_item)
+    $default  reduce usando la regla 55 (print_item)
 
 
-State 86
+Estado 86
 
-   57 read_list: IDE .
+   57 read_list: IDE •
 
-    $default  reduce using rule 57 (read_list)
+    $default  reduce usando la regla 57 (read_list)
 
 
-State 87
+Estado 87
 
-   50 statement: REA "(" read_list . ")" ";"
-   58 read_list: read_list . "," IDE
+   50 statement: REA "(" read_list • ")" ";"
+   58 read_list: read_list • "," IDE
 
-    ")"  shift, and go to state 114
-    ","  shift, and go to state 115
+    ")"  desplazar e ir al estado 114
+    ","  desplazar e ir al estado 115
 
 
-State 88
+Estado 88
 
-   45 statement: DO $@8 statement . WHI "(" expression ")" ";"
+   45 statement: DO $@8 statement • WHI "(" expression ")" ";"
 
-    WHI  shift, and go to state 116
+    WHI  desplazar e ir al estado 116
 
 
-State 89
+Estado 89
 
-   47 statement: FOR $@9 "(" . asignation ";" expression ";" asignation ")" statement
+   47 statement: FOR $@9 "(" • asignation ";" expression ";" asignation ")" statement
 
-    IDE  shift, and go to state 117
+    IDE  desplazar e ir al estado 117
 
-    asignation  go to state 118
+    asignation  ir al estado 118
 
 
-State 90
+Estado 90
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
-   73           | "-" expression .
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
+   73           | "-" expression •
 
-    $default  reduce using rule 73 (expression)
+    $default  reduce usando la regla 73 (expression)
 
 
-State 91
+Estado 91
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
-   74           | "(" expression . ")"
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
+   74           | "(" expression • ")"
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    ")"   shift, and go to state 119
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    ")"   desplazar e ir al estado 119
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
 
-State 92
+Estado 92
 
-   69 expression: expression "+" . expression
+   69 expression: expression "+" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 120
-    call_function  go to state 72
+    expression     ir al estado 120
+    call_function  ir al estado 72
 
 
-State 93
+Estado 93
 
-   70 expression: expression "-" . expression
+   70 expression: expression "-" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 121
-    call_function  go to state 72
+    expression     ir al estado 121
+    call_function  ir al estado 72
 
 
-State 94
+Estado 94
 
-   71 expression: expression "*" . expression
+   71 expression: expression "*" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 122
-    call_function  go to state 72
+    expression     ir al estado 122
+    call_function  ir al estado 72
 
 
-State 95
+Estado 95
 
-   72 expression: expression "/" . expression
+   72 expression: expression "/" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 123
-    call_function  go to state 72
+    expression     ir al estado 123
+    call_function  ir al estado 72
 
 
-State 96
+Estado 96
 
-   37 statement: RET expression ";" .
+   37 statement: RET expression ";" •
 
-    $default  reduce using rule 37 (statement)
+    $default  reduce usando la regla 37 (statement)
 
 
-State 97
+Estado 97
 
-   64 expression: expression "==" . expression
+   64 expression: expression "==" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 124
-    call_function  go to state 72
+    expression     ir al estado 124
+    call_function  ir al estado 72
 
 
-State 98
+Estado 98
 
-   63 expression: expression "!=" . expression
+   63 expression: expression "!=" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 125
-    call_function  go to state 72
+    expression     ir al estado 125
+    call_function  ir al estado 72
 
 
-State 99
+Estado 99
 
-   65 expression: expression ">" . expression
+   65 expression: expression ">" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 126
-    call_function  go to state 72
+    expression     ir al estado 126
+    call_function  ir al estado 72
 
 
-State 100
+Estado 100
 
-   66 expression: expression ">=" . expression
+   66 expression: expression ">=" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 127
-    call_function  go to state 72
+    expression     ir al estado 127
+    call_function  ir al estado 72
 
 
-State 101
+Estado 101
 
-   67 expression: expression "<" . expression
+   67 expression: expression "<" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 128
-    call_function  go to state 72
+    expression     ir al estado 128
+    call_function  ir al estado 72
 
 
-State 102
+Estado 102
 
-   68 expression: expression "<=" . expression
+   68 expression: expression "<=" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 129
-    call_function  go to state 72
+    expression     ir al estado 129
+    call_function  ir al estado 72
 
 
-State 103
+Estado 103
 
-   77 call_function: IDE "(" arg_list ")" .
+   77 call_function: IDE "(" arg_list ")" •
 
-    $default  reduce using rule 77 (call_function)
+    $default  reduce usando la regla 77 (call_function)
 
 
-State 104
+Estado 104
 
-   61 arg_list: arg_list "," . expression
+   61 arg_list: arg_list "," • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 130
-    call_function  go to state 72
+    expression     ir al estado 130
+    call_function  ir al estado 72
 
 
-State 105
+Estado 105
 
-   52 asignation: IDE $@10 "=" expression .
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   52 asignation: IDE $@10 "=" expression •
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
-    $default  reduce using rule 52 (asignation)
+    $default  reduce usando la regla 52 (asignation)
 
 
-State 106
+Estado 106
 
-   33 id_decl: IDE .
-   34        | IDE . "=" expression
+   33 id_decl: IDE •
+   34        | IDE • "=" expression
 
-    "="  shift, and go to state 131
+    "="  desplazar e ir al estado 131
 
-    $default  reduce using rule 33 (id_decl)
+    $default  reduce usando la regla 33 (id_decl)
 
 
-State 107
+Estado 107
 
-   27 declaration: VAR $@5 tipo id_list . ";"
-   32 id_list: id_list . "," id_decl
+   27 declaration: VAR $@5 tipo id_list • ";"
+   32 id_list: id_list • "," id_decl
 
-    ";"  shift, and go to state 132
-    ","  shift, and go to state 133
+    ";"  desplazar e ir al estado 132
+    ","  desplazar e ir al estado 133
 
 
-State 108
+Estado 108
 
-   31 id_list: id_decl .
+   31 id_list: id_decl •
 
-    $default  reduce using rule 31 (id_list)
+    $default  reduce usando la regla 31 (id_list)
 
 
-State 109
+Estado 109
 
-   29 declaration: CON $@6 tipo id_list . ";"
-   32 id_list: id_list . "," id_decl
+   29 declaration: CON $@6 tipo id_list • ";"
+   32 id_list: id_list • "," id_decl
 
-    ";"  shift, and go to state 134
-    ","  shift, and go to state 133
+    ";"  desplazar e ir al estado 134
+    ","  desplazar e ir al estado 133
 
 
-State 110
+Estado 110
 
-   40 statement: IF "(" expression ")" . statement
-   41          | IF "(" expression ")" . statement ELS statement
+   40 statement: IF "(" expression ")" • statement
+   41          | IF "(" expression ")" • statement ELS statement
 
-    IDE  shift, and go to state 38
-    IF   shift, and go to state 41
-    WHI  shift, and go to state 42
-    PRI  shift, and go to state 43
-    REA  shift, and go to state 44
-    DO   shift, and go to state 45
-    FOR  shift, and go to state 46
-    BRK  shift, and go to state 47
-    RET  shift, and go to state 48
-    "{"  shift, and go to state 34
+    IDE  desplazar e ir al estado 38
+    IF   desplazar e ir al estado 41
+    WHI  desplazar e ir al estado 42
+    PRI  desplazar e ir al estado 43
+    REA  desplazar e ir al estado 44
+    DO   desplazar e ir al estado 45
+    FOR  desplazar e ir al estado 46
+    BRK  desplazar e ir al estado 47
+    RET  desplazar e ir al estado 48
+    "{"  desplazar e ir al estado 34
 
-    block          go to state 50
-    statement      go to state 135
-    asignation     go to state 53
-    call_function  go to state 54
+    block          ir al estado 50
+    statement      ir al estado 135
+    asignation     ir al estado 53
+    call_function  ir al estado 54
 
 
-State 111
+Estado 111
 
-   43 statement: WHI $@7 "(" expression . ")" statement
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   43 statement: WHI $@7 "(" expression • ")" statement
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    ")"   shift, and go to state 136
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    ")"   desplazar e ir al estado 136
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
 
-State 112
+Estado 112
 
-   49 statement: PRI "(" print_list ")" . ";"
+   49 statement: PRI "(" print_list ")" • ";"
 
-    ";"  shift, and go to state 137
+    ";"  desplazar e ir al estado 137
 
 
-State 113
+Estado 113
 
-   54 print_list: print_list "," . print_item
+   54 print_list: print_list "," • print_item
 
-    IDE  shift, and go to state 66
-    CAD  shift, and go to state 82
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    CAD  desplazar e ir al estado 82
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    print_item     go to state 138
-    expression     go to state 85
-    call_function  go to state 72
+    print_item     ir al estado 138
+    expression     ir al estado 85
+    call_function  ir al estado 72
 
 
-State 114
+Estado 114
 
-   50 statement: REA "(" read_list ")" . ";"
+   50 statement: REA "(" read_list ")" • ";"
 
-    ";"  shift, and go to state 139
+    ";"  desplazar e ir al estado 139
 
 
-State 115
+Estado 115
 
-   58 read_list: read_list "," . IDE
+   58 read_list: read_list "," • IDE
 
-    IDE  shift, and go to state 140
+    IDE  desplazar e ir al estado 140
 
 
-State 116
+Estado 116
 
-   45 statement: DO $@8 statement WHI . "(" expression ")" ";"
+   45 statement: DO $@8 statement WHI • "(" expression ")" ";"
 
-    "("  shift, and go to state 141
+    "("  desplazar e ir al estado 141
 
 
-State 117
+Estado 117
 
-   52 asignation: IDE . $@10 "=" expression
+   52 asignation: IDE • $@10 "=" expression
 
-    $default  reduce using rule 51 ($@10)
+    $default  reduce usando la regla 51 ($@10)
 
-    $@10  go to state 56
+    $@10  ir al estado 56
 
 
-State 118
+Estado 118
 
-   47 statement: FOR $@9 "(" asignation . ";" expression ";" asignation ")" statement
+   47 statement: FOR $@9 "(" asignation • ";" expression ";" asignation ")" statement
 
-    ";"  shift, and go to state 142
+    ";"  desplazar e ir al estado 142
 
 
-State 119
+Estado 119
 
-   74 expression: "(" expression ")" .
+   74 expression: "(" expression ")" •
 
-    $default  reduce using rule 74 (expression)
+    $default  reduce usando la regla 74 (expression)
 
 
-State 120
+Estado 120
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   69           | expression "+" expression .
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   69           | expression "+" expression •
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    $default  reduce using rule 69 (expression)
+    $default  reduce usando la regla 69 (expression)
 
 
-State 121
+Estado 121
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   70           | expression "-" expression .
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   70           | expression "-" expression •
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    $default  reduce using rule 70 (expression)
+    $default  reduce usando la regla 70 (expression)
 
 
-State 122
+Estado 122
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   71           | expression "*" expression .
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   71           | expression "*" expression •
+   72           | expression • "/" expression
 
-    $default  reduce using rule 71 (expression)
+    $default  reduce usando la regla 71 (expression)
 
 
-State 123
+Estado 123
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
-   72           | expression "/" expression .
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
+   72           | expression "/" expression •
 
-    $default  reduce using rule 72 (expression)
+    $default  reduce usando la regla 72 (expression)
 
 
-State 124
+Estado 124
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   64           | expression "==" expression .
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   64           | expression "==" expression •
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"  shift, and go to state 92
-    "-"  shift, and go to state 93
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "+"  desplazar e ir al estado 92
+    "-"  desplazar e ir al estado 93
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    "=="  error (nonassociative)
-    "!="  error (nonassociative)
-    ">"   error (nonassociative)
-    ">="  error (nonassociative)
-    "<"   error (nonassociative)
-    "<="  error (nonassociative)
+    "=="  error (no asociativo)
+    "!="  error (no asociativo)
+    ">"   error (no asociativo)
+    ">="  error (no asociativo)
+    "<"   error (no asociativo)
+    "<="  error (no asociativo)
 
-    $default  reduce using rule 64 (expression)
+    $default  reduce usando la regla 64 (expression)
 
 
-State 125
+Estado 125
 
-   63 expression: expression . "!=" expression
-   63           | expression "!=" expression .
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   63           | expression "!=" expression •
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"  shift, and go to state 92
-    "-"  shift, and go to state 93
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "+"  desplazar e ir al estado 92
+    "-"  desplazar e ir al estado 93
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    "=="  error (nonassociative)
-    "!="  error (nonassociative)
-    ">"   error (nonassociative)
-    ">="  error (nonassociative)
-    "<"   error (nonassociative)
-    "<="  error (nonassociative)
+    "=="  error (no asociativo)
+    "!="  error (no asociativo)
+    ">"   error (no asociativo)
+    ">="  error (no asociativo)
+    "<"   error (no asociativo)
+    "<="  error (no asociativo)
 
-    $default  reduce using rule 63 (expression)
+    $default  reduce usando la regla 63 (expression)
 
 
-State 126
+Estado 126
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   65           | expression ">" expression .
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   65           | expression ">" expression •
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"  shift, and go to state 92
-    "-"  shift, and go to state 93
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "+"  desplazar e ir al estado 92
+    "-"  desplazar e ir al estado 93
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    "=="  error (nonassociative)
-    "!="  error (nonassociative)
-    ">"   error (nonassociative)
-    ">="  error (nonassociative)
-    "<"   error (nonassociative)
-    "<="  error (nonassociative)
+    "=="  error (no asociativo)
+    "!="  error (no asociativo)
+    ">"   error (no asociativo)
+    ">="  error (no asociativo)
+    "<"   error (no asociativo)
+    "<="  error (no asociativo)
 
-    $default  reduce using rule 65 (expression)
+    $default  reduce usando la regla 65 (expression)
 
 
-State 127
+Estado 127
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   66           | expression ">=" expression .
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   66           | expression ">=" expression •
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"  shift, and go to state 92
-    "-"  shift, and go to state 93
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "+"  desplazar e ir al estado 92
+    "-"  desplazar e ir al estado 93
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    "=="  error (nonassociative)
-    "!="  error (nonassociative)
-    ">"   error (nonassociative)
-    ">="  error (nonassociative)
-    "<"   error (nonassociative)
-    "<="  error (nonassociative)
+    "=="  error (no asociativo)
+    "!="  error (no asociativo)
+    ">"   error (no asociativo)
+    ">="  error (no asociativo)
+    "<"   error (no asociativo)
+    "<="  error (no asociativo)
 
-    $default  reduce using rule 66 (expression)
+    $default  reduce usando la regla 66 (expression)
 
 
-State 128
+Estado 128
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   67           | expression "<" expression .
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   67           | expression "<" expression •
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"  shift, and go to state 92
-    "-"  shift, and go to state 93
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "+"  desplazar e ir al estado 92
+    "-"  desplazar e ir al estado 93
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    "=="  error (nonassociative)
-    "!="  error (nonassociative)
-    ">"   error (nonassociative)
-    ">="  error (nonassociative)
-    "<"   error (nonassociative)
-    "<="  error (nonassociative)
+    "=="  error (no asociativo)
+    "!="  error (no asociativo)
+    ">"   error (no asociativo)
+    ">="  error (no asociativo)
+    "<"   error (no asociativo)
+    "<="  error (no asociativo)
 
-    $default  reduce using rule 67 (expression)
+    $default  reduce usando la regla 67 (expression)
 
 
-State 129
+Estado 129
 
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   68           | expression "<=" expression .
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   68           | expression "<=" expression •
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"  shift, and go to state 92
-    "-"  shift, and go to state 93
-    "*"  shift, and go to state 94
-    "/"  shift, and go to state 95
+    "+"  desplazar e ir al estado 92
+    "-"  desplazar e ir al estado 93
+    "*"  desplazar e ir al estado 94
+    "/"  desplazar e ir al estado 95
 
-    "=="  error (nonassociative)
-    "!="  error (nonassociative)
-    ">"   error (nonassociative)
-    ">="  error (nonassociative)
-    "<"   error (nonassociative)
-    "<="  error (nonassociative)
+    "=="  error (no asociativo)
+    "!="  error (no asociativo)
+    ">"   error (no asociativo)
+    ">="  error (no asociativo)
+    "<"   error (no asociativo)
+    "<="  error (no asociativo)
 
-    $default  reduce using rule 68 (expression)
+    $default  reduce usando la regla 68 (expression)
 
 
-State 130
+Estado 130
 
-   61 arg_list: arg_list "," expression .
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   61 arg_list: arg_list "," expression •
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
-    $default  reduce using rule 61 (arg_list)
+    $default  reduce usando la regla 61 (arg_list)
 
 
-State 131
+Estado 131
 
-   34 id_decl: IDE "=" . expression
+   34 id_decl: IDE "=" • expression
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 143
-    call_function  go to state 72
+    expression     ir al estado 143
+    call_function  ir al estado 72
 
 
-State 132
+Estado 132
 
-   27 declaration: VAR $@5 tipo id_list ";" .
+   27 declaration: VAR $@5 tipo id_list ";" •
 
-    $default  reduce using rule 27 (declaration)
+    $default  reduce usando la regla 27 (declaration)
 
 
-State 133
+Estado 133
 
-   32 id_list: id_list "," . id_decl
+   32 id_list: id_list "," • id_decl
 
-    IDE  shift, and go to state 106
+    IDE  desplazar e ir al estado 106
 
-    id_decl  go to state 144
+    id_decl  ir al estado 144
 
 
-State 134
+Estado 134
 
-   29 declaration: CON $@6 tipo id_list ";" .
+   29 declaration: CON $@6 tipo id_list ";" •
 
-    $default  reduce using rule 29 (declaration)
+    $default  reduce usando la regla 29 (declaration)
 
 
-State 135
+Estado 135
 
-   40 statement: IF "(" expression ")" statement .
-   41          | IF "(" expression ")" statement . ELS statement
+   40 statement: IF "(" expression ")" statement •
+   41          | IF "(" expression ")" statement • ELS statement
 
-    ELS  shift, and go to state 145
+    ELS  desplazar e ir al estado 145
 
-    $default  reduce using rule 40 (statement)
+    $default  reduce usando la regla 40 (statement)
 
 
-State 136
+Estado 136
 
-   43 statement: WHI $@7 "(" expression ")" . statement
+   43 statement: WHI $@7 "(" expression ")" • statement
 
-    IDE  shift, and go to state 38
-    IF   shift, and go to state 41
-    WHI  shift, and go to state 42
-    PRI  shift, and go to state 43
-    REA  shift, and go to state 44
-    DO   shift, and go to state 45
-    FOR  shift, and go to state 46
-    BRK  shift, and go to state 47
-    RET  shift, and go to state 48
-    "{"  shift, and go to state 34
+    IDE  desplazar e ir al estado 38
+    IF   desplazar e ir al estado 41
+    WHI  desplazar e ir al estado 42
+    PRI  desplazar e ir al estado 43
+    REA  desplazar e ir al estado 44
+    DO   desplazar e ir al estado 45
+    FOR  desplazar e ir al estado 46
+    BRK  desplazar e ir al estado 47
+    RET  desplazar e ir al estado 48
+    "{"  desplazar e ir al estado 34
 
-    block          go to state 50
-    statement      go to state 146
-    asignation     go to state 53
-    call_function  go to state 54
+    block          ir al estado 50
+    statement      ir al estado 146
+    asignation     ir al estado 53
+    call_function  ir al estado 54
 
 
-State 137
+Estado 137
 
-   49 statement: PRI "(" print_list ")" ";" .
+   49 statement: PRI "(" print_list ")" ";" •
 
-    $default  reduce using rule 49 (statement)
+    $default  reduce usando la regla 49 (statement)
 
 
-State 138
+Estado 138
 
-   54 print_list: print_list "," print_item .
+   54 print_list: print_list "," print_item •
 
-    $default  reduce using rule 54 (print_list)
+    $default  reduce usando la regla 54 (print_list)
 
 
-State 139
+Estado 139
 
-   50 statement: REA "(" read_list ")" ";" .
+   50 statement: REA "(" read_list ")" ";" •
 
-    $default  reduce using rule 50 (statement)
+    $default  reduce usando la regla 50 (statement)
 
 
-State 140
+Estado 140
 
-   58 read_list: read_list "," IDE .
+   58 read_list: read_list "," IDE •
 
-    $default  reduce using rule 58 (read_list)
+    $default  reduce usando la regla 58 (read_list)
 
 
-State 141
+Estado 141
 
-   45 statement: DO $@8 statement WHI "(" . expression ")" ";"
+   45 statement: DO $@8 statement WHI "(" • expression ")" ";"
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 147
-    call_function  go to state 72
+    expression     ir al estado 147
+    call_function  ir al estado 72
 
 
-State 142
+Estado 142
 
-   47 statement: FOR $@9 "(" asignation ";" . expression ";" asignation ")" statement
+   47 statement: FOR $@9 "(" asignation ";" • expression ";" asignation ")" statement
 
-    IDE  shift, and go to state 66
-    NUM  shift, and go to state 67
-    "-"  shift, and go to state 68
-    "("  shift, and go to state 70
+    IDE  desplazar e ir al estado 66
+    NUM  desplazar e ir al estado 67
+    "-"  desplazar e ir al estado 68
+    "("  desplazar e ir al estado 70
 
-    expression     go to state 148
-    call_function  go to state 72
+    expression     ir al estado 148
+    call_function  ir al estado 72
 
 
-State 143
+Estado 143
 
-   34 id_decl: IDE "=" expression .
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   34 id_decl: IDE "=" expression •
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
-    $default  reduce using rule 34 (id_decl)
+    $default  reduce usando la regla 34 (id_decl)
 
 
-State 144
+Estado 144
 
-   32 id_list: id_list "," id_decl .
+   32 id_list: id_list "," id_decl •
 
-    $default  reduce using rule 32 (id_list)
+    $default  reduce usando la regla 32 (id_list)
 
 
-State 145
+Estado 145
 
-   41 statement: IF "(" expression ")" statement ELS . statement
+   41 statement: IF "(" expression ")" statement ELS • statement
 
-    IDE  shift, and go to state 38
-    IF   shift, and go to state 41
-    WHI  shift, and go to state 42
-    PRI  shift, and go to state 43
-    REA  shift, and go to state 44
-    DO   shift, and go to state 45
-    FOR  shift, and go to state 46
-    BRK  shift, and go to state 47
-    RET  shift, and go to state 48
-    "{"  shift, and go to state 34
+    IDE  desplazar e ir al estado 38
+    IF   desplazar e ir al estado 41
+    WHI  desplazar e ir al estado 42
+    PRI  desplazar e ir al estado 43
+    REA  desplazar e ir al estado 44
+    DO   desplazar e ir al estado 45
+    FOR  desplazar e ir al estado 46
+    BRK  desplazar e ir al estado 47
+    RET  desplazar e ir al estado 48
+    "{"  desplazar e ir al estado 34
 
-    block          go to state 50
-    statement      go to state 149
-    asignation     go to state 53
-    call_function  go to state 54
+    block          ir al estado 50
+    statement      ir al estado 149
+    asignation     ir al estado 53
+    call_function  ir al estado 54
 
 
-State 146
+Estado 146
 
-   43 statement: WHI $@7 "(" expression ")" statement .
+   43 statement: WHI $@7 "(" expression ")" statement •
 
-    $default  reduce using rule 43 (statement)
+    $default  reduce usando la regla 43 (statement)
 
 
-State 147
+Estado 147
 
-   45 statement: DO $@8 statement WHI "(" expression . ")" ";"
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   45 statement: DO $@8 statement WHI "(" expression • ")" ";"
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    ")"   shift, and go to state 150
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    ")"   desplazar e ir al estado 150
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
 
-State 148
+Estado 148
 
-   47 statement: FOR $@9 "(" asignation ";" expression . ";" asignation ")" statement
-   63 expression: expression . "!=" expression
-   64           | expression . "==" expression
-   65           | expression . ">" expression
-   66           | expression . ">=" expression
-   67           | expression . "<" expression
-   68           | expression . "<=" expression
-   69           | expression . "+" expression
-   70           | expression . "-" expression
-   71           | expression . "*" expression
-   72           | expression . "/" expression
+   47 statement: FOR $@9 "(" asignation ";" expression • ";" asignation ")" statement
+   63 expression: expression • "!=" expression
+   64           | expression • "==" expression
+   65           | expression • ">" expression
+   66           | expression • ">=" expression
+   67           | expression • "<" expression
+   68           | expression • "<=" expression
+   69           | expression • "+" expression
+   70           | expression • "-" expression
+   71           | expression • "*" expression
+   72           | expression • "/" expression
 
-    "+"   shift, and go to state 92
-    "-"   shift, and go to state 93
-    "*"   shift, and go to state 94
-    "/"   shift, and go to state 95
-    ";"   shift, and go to state 151
-    "=="  shift, and go to state 97
-    "!="  shift, and go to state 98
-    ">"   shift, and go to state 99
-    ">="  shift, and go to state 100
-    "<"   shift, and go to state 101
-    "<="  shift, and go to state 102
+    "+"   desplazar e ir al estado 92
+    "-"   desplazar e ir al estado 93
+    "*"   desplazar e ir al estado 94
+    "/"   desplazar e ir al estado 95
+    ";"   desplazar e ir al estado 151
+    "=="  desplazar e ir al estado 97
+    "!="  desplazar e ir al estado 98
+    ">"   desplazar e ir al estado 99
+    ">="  desplazar e ir al estado 100
+    "<"   desplazar e ir al estado 101
+    "<="  desplazar e ir al estado 102
 
 
-State 149
+Estado 149
 
-   41 statement: IF "(" expression ")" statement ELS statement .
+   41 statement: IF "(" expression ")" statement ELS statement •
 
-    $default  reduce using rule 41 (statement)
+    $default  reduce usando la regla 41 (statement)
 
 
-State 150
+Estado 150
 
-   45 statement: DO $@8 statement WHI "(" expression ")" . ";"
+   45 statement: DO $@8 statement WHI "(" expression ")" • ";"
 
-    ";"  shift, and go to state 152
+    ";"  desplazar e ir al estado 152
 
 
-State 151
+Estado 151
 
-   47 statement: FOR $@9 "(" asignation ";" expression ";" . asignation ")" statement
+   47 statement: FOR $@9 "(" asignation ";" expression ";" • asignation ")" statement
 
-    IDE  shift, and go to state 117
+    IDE  desplazar e ir al estado 117
 
-    asignation  go to state 153
+    asignation  ir al estado 153
 
 
-State 152
+Estado 152
 
-   45 statement: DO $@8 statement WHI "(" expression ")" ";" .
+   45 statement: DO $@8 statement WHI "(" expression ")" ";" •
 
-    $default  reduce using rule 45 (statement)
+    $default  reduce usando la regla 45 (statement)
 
 
-State 153
+Estado 153
 
-   47 statement: FOR $@9 "(" asignation ";" expression ";" asignation . ")" statement
+   47 statement: FOR $@9 "(" asignation ";" expression ";" asignation • ")" statement
 
-    ")"  shift, and go to state 154
+    ")"  desplazar e ir al estado 154
 
 
-State 154
+Estado 154
 
-   47 statement: FOR $@9 "(" asignation ";" expression ";" asignation ")" . statement
+   47 statement: FOR $@9 "(" asignation ";" expression ";" asignation ")" • statement
 
-    IDE  shift, and go to state 38
-    IF   shift, and go to state 41
-    WHI  shift, and go to state 42
-    PRI  shift, and go to state 43
-    REA  shift, and go to state 44
-    DO   shift, and go to state 45
-    FOR  shift, and go to state 46
-    BRK  shift, and go to state 47
-    RET  shift, and go to state 48
-    "{"  shift, and go to state 34
+    IDE  desplazar e ir al estado 38
+    IF   desplazar e ir al estado 41
+    WHI  desplazar e ir al estado 42
+    PRI  desplazar e ir al estado 43
+    REA  desplazar e ir al estado 44
+    DO   desplazar e ir al estado 45
+    FOR  desplazar e ir al estado 46
+    BRK  desplazar e ir al estado 47
+    RET  desplazar e ir al estado 48
+    "{"  desplazar e ir al estado 34
 
-    block          go to state 50
-    statement      go to state 155
-    asignation     go to state 53
-    call_function  go to state 54
+    block          ir al estado 50
+    statement      ir al estado 155
+    asignation     ir al estado 53
+    call_function  ir al estado 54
 
 
-State 155
+Estado 155
 
-   47 statement: FOR $@9 "(" asignation ";" expression ";" asignation ")" statement .
+   47 statement: FOR $@9 "(" asignation ";" expression ";" asignation ")" statement •
 
-    $default  reduce using rule 47 (statement)
+    $default  reduce usando la regla 47 (statement)

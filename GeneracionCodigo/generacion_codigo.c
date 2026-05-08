@@ -443,7 +443,7 @@ ListaC generar_print_expresiones(ListaC lista_codigo){
 
 ListaC generar_read(char *ide){
   ListaC lista_codigo = creaLC();
-
+  Simbolo s = getSimboloStackTS(stack_ts, ide);
   
   Operacion li_v0, syscall, sw_res, move_s0, move_s1, move_a0, move_v0;
 
@@ -459,7 +459,6 @@ ListaC generar_read(char *ide){
   move_s1.arg2 = NULL;
   insertaLC(lista_codigo, finalLC(lista_codigo), move_s1);
 
-  
   li_v0.op = "\tli";
   li_v0.res = "$v0";
   li_v0.arg1 = "5";
@@ -474,7 +473,7 @@ ListaC generar_read(char *ide){
 
   sw_res.op = "\tsw";
   sw_res.res = li_v0.res;
-  asprintf(&sw_res.arg1, "_%s", ide);
+  asprintf(&sw_res.arg1, "%d($sp)", s.var_const_local.offset);
   sw_res.arg2 = NULL;
   insertaLC(lista_codigo, finalLC(lista_codigo), sw_res);
 
@@ -490,7 +489,6 @@ ListaC generar_read(char *ide){
   move_v0.arg2 = NULL;
   insertaLC(lista_codigo, finalLC(lista_codigo), move_v0);
 
-  
   liberar_reg(li_v0.res);
 
   return lista_codigo;

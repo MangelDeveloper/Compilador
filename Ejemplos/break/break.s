@@ -2,8 +2,6 @@
 # Seccion de datos
 	.data
 
-_a:
-	.word 0
 
 ###################
 # Seccion de codigo
@@ -11,6 +9,7 @@ _a:
 	.globl main
 main:
 	addiu $sp,$sp,-44
+	addiu $sp,$sp,-4
 	li $t0,0
 	sw $t0,4($sp)
 do_while_start_2:
@@ -22,6 +21,7 @@ do_while_start_2:
 	li $t0,1
 	bnez $t0,do_while_start_2
 do_while_end_1:
+	addiu $sp,$sp,4
 	addiu $sp,$sp,44
 
 ###################

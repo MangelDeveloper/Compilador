@@ -2,6 +2,8 @@
 # Seccion de datos
 	.data
 
+str1:
+	.asciiz "\n"
 
 ###################
 # Seccion de codigo
@@ -21,6 +23,13 @@ for_start_2:
 	li $v0,1
 	move $a0,$t1
 	syscall
+	move $s0,$a0
+	move $s1,$v0
+	li $v0,4
+	la $a0,str1
+	syscall
+	move $a0,$s0
+	move $v0,$s1
 	lw $t1,4($sp)
 	li $t2,1
 	add $t1,$t1,$t2

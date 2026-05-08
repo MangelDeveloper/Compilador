@@ -3,4 +3,6 @@ void main() {
     var int b;
     
     read(a,b);
+
+    print("Valor de a: ",a,"\nValor de b: ",b,"\n");
 }
